@@ -13,3 +13,9 @@ COPY *.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /my_app
 
 COPY tracker.db /app/tracker.db
+
+ENV DATABASE_URL /app/tracker.db
+
+EXPOSE 8080
+
+CMD ["/my_app"]
